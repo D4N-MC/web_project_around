@@ -2,6 +2,31 @@
     margin-top:45px;
     height: 74px;
     width: 882px;
-    /*width: 62vw;*/
     border-bottom:rgba(84, 84, 84, 1) solid 0.5px;
+    position:relative;
+}
+.header__icon{
+    position: absolute;
+    left:0;
+    top:0;
+}
+
+@media screen and (max-width:910px){
+    .header{
+        width: 580px;
+    }
+}
+
+@media screen and (max-width:608px){
+    .header{
+        margin:28px 0 0 0;
+        width: 320px;
+        height:56px;
+        border-bottom:rgba(84, 84, 84, 1) solid 0.5px;
+    }
+
+    .header__icon{
+        width: 126px;
+        height: 24px;
+    }
 }

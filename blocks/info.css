@@ -81,134 +81,211 @@
 .user-add{
     width:150px;
     height:50px;
-    position:absolute;
-    right:0;
     z-index:2;
+    border: solid 1px white;
+    position: relative;
+    margin-left:168px;
 }
 
-.user-addhover{
-    width:150px;
-    height:50px;
+.user-add__normal{
+    width: 22px;
+    height: 22px;
+    z-index:2;
     position:absolute;
-    right:0;
-    z-index:1;
+    top:14px;
+    left:64px;
 }
 
 .user-add:hover{
+    border: solid 1px gray;
+}
+
+.user-add:hover .user-add__normal{
     opacity:0;
+
 }
 
-.user-add:hover{
-    opacity:60%;
-}
-
-.Edit{
-    width: calc(100vw - 15px);
-    height: 99vh;
+.user-add__hover{
+    width: 22px;
+    height: 22px;
+    z-index:2;
     position:absolute;
-    top:0;
-    bottom:0;
-    right:0;
-    left:0;
-    z-index:3;
+    top:14px;
+    left:64px;
+}
+
+@media screen and (max-width:910px){
+    .info{
+    margin-top:40px;
+    height: 120px;
+    width:580px;
     display:flex;
-    align-items: center;
-    justify-content:center;
+    flex-direction:row;
+    align-items:center;
+    position:relative;
 }
 
-.formulario{
-    position:absolute;
-    right:0;
-    top:0;
-    bottom:0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    pointer-events:none;
-    z-index:1;
+.user-photo{
+    width:120px;
+    height:120px;
+    border-radius:50%;
 }
 
-.block{
-    width: 430px;
-    height: 330px;
-    background-color: white;
-    border-radius:10px;
-    z-index:3;
+.user{
+    width: 350px;
+    height: 77px;
     display:flex;
     flex-direction:column;
-    align-items: center;
+    margin-left:8px;
+}
+
+.user__top{
+    height: 43px;
+    width: 414px;
+    display:flex;
+    flex-direction:row;
+}
+
+.user__top-name{
+    width: 310px;
+    height: 43px;
+    margin:8px 5px 0 0;
+    font-family:Inter;
+    color:white;
+    font-size:33px;
+    font-weight:500;
+    line-height:41px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+.user__edit-buttons{
+    width: 24px;
+    height: 24px;
     position:relative;
-    pointer-events:all;
+    margin-top:19px;
 }
 
-.block__close{
+.user__top-normal{
+    width: 24px;
+    height: 24px;
     position:absolute;
-    right:-35px;
-    top:-35px;
-    z-index:4;
 }
 
-.block__close-hover{
+.user__top-hover{
+    width: 24px;
+    height: 24px;
     position:absolute;
-    right:-35px;
-    top:-35px;
 }
 
-.block__close:hover{
+.user__top-normal:hover{
     opacity:0;
 }
 
-.block__text{
-    margin:24px 36px 0 0;
-    width: 330px;
-    height: 23px;
-    font-family: Inter;
-    font-weight:900;
-    font-size: 24px;
-    line-height:29.05px;
-}
-
-#nombre{
-    width: 358px;
-    height: 28px;
-    border:none;
-    border-bottom: 1px solid;
-    margin-top:54px;
+.user__bottom{
+    width: 372px;
+    height: 18px;
+    margin-top:16px;
     font-family:Inter;
-}
-
-#about{
-    width: 358px;
-    height: 28px;
-    border:none;
-    border-bottom: 1px solid;
-    margin-top:30px;
-    font-family:Inter;
-}
-
-.Guardar{
-    width: 358px;
-    height: 50px;
-    margin-top:48px;
-    font-family:Inter;
-    background-color:black;
     color:white;
+    font-size:17px;
+    font-weight:400;
+    line-height:21.78px;
 }
 
-.Guardar:hover{
-    cursor:pointer;
-    background: #000000CC;
+.user-add{
+    width:100px;
+    height:40px;
+    z-index:2;
+    border: solid 1px white;
+    position: relative;
+    margin-left:10px;
 }
 
-.Guardar-disabled{
-    width: 358px;
-    height: 50px;
-    margin-top:48px;
-    font-family:Inter;
-    background-color:white;
-    color:gray;
-    border: gray 0.5px solid;
-    cursor:not-allowed;
-    pointer-events:none;
-    z-index:3;
+.user-add__normal{
+    width: 18px;
+    height: 18px;
+    z-index:2;
+    position:absolute;
+    top:12px;
+    left:35px;
+}
+
+.user-add__hover{
+    width: 18px;
+    height: 18px;
+    z-index:2;
+    position:absolute;
+    top:12px;
+    left:35px;
+}
+}
+
+@media screen and (max-width:608px){
+    .info{
+        flex-direction: column;
+        width: 282px;
+        height: 286px;
+    }
+    .user{
+        width: 280px;
+        height: 66px;
+        margin:15px 0 0 0;
+    }
+    .user__top{
+        width: 280px;
+        height: 38px;
+    }
+    .user__top-name{
+        width: 201px;
+        height: 38px;
+        font-weight:500;
+        font-size: 22px;
+        line-height: 56px;
+        text-align: center;
+        margin:0 0 0 39.5px;
+    }
+    .user__edit-buttons{
+        width: 18px;
+        height: 18px;
+        margin-top:18px;
+        margin-left:10px;
+    }
+    .user__top-normal{
+        width: 18px;
+        height: 18px;
+    }
+    
+    .user__top-hover{
+        width: 18px;
+        height: 18px;
+    }
+
+    .user__bottom{
+        width: 280px;
+        height: 14px;
+        margin-top:12px;
+        font-size:14px;
+        font-weight:400;
+        line-height:16.94px;
+        text-align: center;
+    }
+    
+    .user-add{
+        margin-top:32px;
+        margin-left:0;
+        width:282px;
+        height:50px;
+    }
+
+    .user-add__normal{
+        left:132px;
+        top:17px;
+    }
+    
+    .user-add__hover{
+         left:132px;
+         top:17px;
+    }
 }
