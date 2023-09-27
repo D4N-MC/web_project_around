@@ -9,4 +9,4 @@
 5. #### Investigue y me ayude de fuentes de Internet para poder hacer mi javascript totalmente funcional.
 6. #### Terminé haciendo los diseños responsivos para diferentes tamaños de pantalla.
 
-### Visita la pagina aqui: 
+### Visita la pagina aqui:https://d4n-mc.github.io/web_project_around/
