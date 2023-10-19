@@ -120,7 +120,6 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    pointer-events: all;
   }
 
   .block__close {
