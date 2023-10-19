@@ -144,7 +144,7 @@ function addPost(postSrc, postText) {
       const imagePopup = document.querySelector(".image-popup");
       const bigImage = imagePopup.querySelector(".image-popup__image");
       const name = imagePopup.querySelector(".image-popup__name");
-      const closePopup = imagePopup.querySelector(".image__close");
+      const closePopup = imagePopup.querySelector(".image-popup__close");
 
       const imageUrl = postImage.src;
       const postName = postText;
