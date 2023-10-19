@@ -41,19 +41,19 @@
   left: 0;
 }
 
-.image__close {
+.image-popup__close {
   position: absolute;
   right: -35px;
   top: -35px;
   z-index: 4;
 }
 
-.image__close-hover {
+.image-popup__closehover {
   position: absolute;
   right: -35px;
   top: -35px;
 }
 
-.image__close:hover {
+.image-popup__close:hover {
   opacity: 0;
 }
