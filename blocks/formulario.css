@@ -1,5 +1,7 @@
 .formulario {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in;
   position: fixed;
   right: 0;
   top: 0;
@@ -10,7 +12,9 @@
 }
 
 .popup_opened {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3 ease-in;
 }
 
 .Edit {
@@ -31,7 +35,6 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  pointer-events: all;
 }
 
 .block__close {

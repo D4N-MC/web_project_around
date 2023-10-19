@@ -68,135 +68,52 @@
             src="images/iconos/Close-hover.svg"
             alt="Cerrar formulario"
           />
-          <h4 class="block__text">Editar perfil</h4>
-          <input type="text" id="nombre" placeholder="Nombre" required />
-          <input type="text" id="about" placeholder="Acerca de mi" required />
+          <h4 class="block__text"></h4>
+          <input type="text" id="nombre" placeholder="" required />
+          <input type="text" id="about" placeholder="" required />
           <button type="button" class="Guardar">Guardar</button>
         </div>
       </div>
     </form>
 
+    <div class="image-popup">
+      <div class="Edit">
+        <div class="image-popup__content">
+          <img src="" alt="Imagen grande del post" class="image-popup__image" />
+          <p class="image-popup__name"></p>
+          <img
+            class="image__close"
+            src="images/iconos/Close.svg"
+            alt="Cerrar formulario"
+          />
+          <img
+            class="image__close-hover"
+            src="images/iconos/Close-hover.svg"
+            alt="Cerrar formulario"
+          />
+        </div>
+      </div>
+    </div>
+
     <section class="images">
-      <div class="post">
-        <img
-          class="post__image"
-          src="images/post/valle-Yosemite.png"
-          alt="valle de Yosemite"
-        />
-        <img
-          class="post__delete-hover"
-          src="images/post/delete-hover.svg"
-          alt="borrar"
-        />
-        <img class="post__delete" src="images/post/delete.svg" alt="borrar" />
-        <h3 class="post__text">Valle de Yosemite</h3>
-        <img
-          class="post__like-hover"
-          src="images/post/like-hover.svg"
-          alt="like"
-        />
-        <img class="post__like" src="images/post/like.svg" alt="like" />
-      </div>
-      <div class="post">
-        <img
-          class="post__image"
-          src="images/post/lago-louise.jpg"
-          alt="lago louise"
-        />
-        <img
-          class="post__delete-hover"
-          src="images/post/delete-hover.svg"
-          alt="borrar"
-        />
-        <img class="post__delete" src="images/post/delete.svg" alt="borrar" />
-        <h3 class="post__text">Lago de Moraine</h3>
-        <img
-          class="post__like-hover"
-          src="images/post/like-hover.svg"
-          alt="like"
-        />
-        <img class="post__like" src="images/post/like.svg" alt="like" />
-      </div>
-      <div class="post">
-        <img
-          class="post__image"
-          src="images/post/montain-calvas.png"
-          alt="montañas calvas"
-        />
-        <img
-          class="post__delete-hover"
-          src="images/post/delete-hover.svg"
-          alt="borrar"
-        />
-        <img class="post__delete" src="images/post/delete.svg" alt="borrar" />
-        <h3 class="post__text">Montañas Calvas</h3>
-        <img
-          class="post__like-hover"
-          src="images/post/like-hover.svg"
-          alt="like"
-        />
-        <img class="post__like" src="images/post/like.svg" alt="like" />
-      </div>
-      <div class="post">
-        <img
-          class="post__image"
-          src="images/post/gran-cañon.jpg"
-          alt="el gran cañon"
-        />
-        <img
-          class="post__delete-hover"
-          src="images/post/delete-hover.svg"
-          alt="borrar"
-        />
-        <img class="post__delete" src="images/post/delete.svg" alt="borrar" />
-        <h3 class="post__text">El gran Cañon</h3>
-        <img
-          class="post__like-hover"
-          src="images/post/like-hover.svg"
-          alt="like"
-        />
-        <img class="post__like" src="images/post/like.svg" alt="like" />
-      </div>
-      <div class="post">
-        <img
-          class="post__image"
-          src="images/post/yellowstone.jpg"
-          alt="parque nacional yellowstone"
-        />
-        <img
-          class="post__delete-hover"
-          src="images/post/delete-hover.svg"
-          alt="borrar"
-        />
-        <img class="post__delete" src="images/post/delete.svg" alt="borrar" />
-        <h3 class="post__text">Parque Yellowstone</h3>
-        <img
-          class="post__like-hover"
-          src="images/post/like-hover.svg"
-          alt="like"
-        />
-        <img class="post__like" src="images/post/like.svg" alt="like" />
-      </div>
-      <div class="post">
-        <img
-          class="post__image"
-          src="images/post/zion-utah.jpg"
-          alt="parque nacional Zion Utah"
-        />
-        <img
-          class="post__delete-hover"
-          src="images/post/delete-hover.svg"
-          alt="borrar"
-        />
-        <img class="post__delete" src="images/post/delete.svg" alt="borrar" />
-        <h3 class="post__text">Zion Parque Nacional</h3>
-        <img
-          class="post__like-hover"
-          src="images/post/like-hover.svg"
-          alt="like"
-        />
-        <img class="post__like" src="images/post/like.svg" alt="like" />
-      </div>
+      <template id="post-template">
+        <div class="post">
+          <img class="post__image" alt="" />
+          <h3 class="post__text"></h3>
+          <img
+            class="post__delete-hover"
+            src="images/post/delete-hover.svg"
+            alt="borrar"
+          />
+          <img class="post__delete" src="images/post/delete.svg" alt="borrar" />
+          <img
+            class="post__like-hover"
+            src="images/post/like-hover.svg"
+            alt="like"
+          />
+          <img class="post__like" src="images/post/like.svg" alt="like" />
+        </div>
+      </template>
     </section>
 
     <script src="scripts/script.js"></script>

@@ -60,6 +60,18 @@
   opacity: 0;
 }
 
+.post__liked{
+  background-image: url(../images/post/liked.svg);
+  z-index:3px;
+  position: absolute;
+  right: 18px;
+  bottom: 30px;
+}
+
+.disabled{
+  opacity:0;
+}
+
 .post__image {
   width: 282px;
   height: 282px;
