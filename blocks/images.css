@@ -61,7 +61,7 @@
 }
 
 .post__liked{
-  background-image: url(../images/post/liked.svg);
+  background-image: url(../images/images-post/liked.svg);
   z-index:3px;
   position: absolute;
   right: 18px;

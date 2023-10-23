@@ -54,7 +54,11 @@ function OpenAddFormulario() {
   if (!addFormOpen) {
     formulario.classList.add("popup_opened");
     const closebutton = document.querySelector(".block__close");
-    closebutton.addEventListener("click", CloseFormulario);
+    closebutton.addEventListener("click", function(){
+      CloseFormulario();
+     guardarButton.classList.add("Guardar");
+     guardarButton.classList.remove("Guardar-disabled"); 
+    });
 
     const titulo = document.getElementById("nombre");
     const link = document.getElementById("about");
@@ -67,7 +71,7 @@ function OpenAddFormulario() {
     titulo.value = "";
     link.value = "";
 
-    const guardarButton = document.querySelector(".Guardar");
+    let guardarButton = document.querySelector(".Guardar");
 
     guardarButton.classList.remove("Guardar");
     guardarButton.classList.add("Guardar-disabled");
@@ -86,6 +90,22 @@ function OpenAddFormulario() {
       }
     }
 
+    //
+    titulo.addEventListener("keydown", function (event) {
+      if (titulo.value !== "" && link.value !== "" && event.key === "Enter" && addFormOpen) {
+        event.preventDefault();
+        handleGuardarClick();
+      }
+    });
+    
+    link.addEventListener("keydown", function (event) {
+      if (titulo.value !== "" && link.value !== "" && event.key === "Enter" && addFormOpen) {
+        event.preventDefault();
+        handleGuardarClick();
+      }
+    });
+    //
+
     titulo.addEventListener("input", CheckPost);
     link.addEventListener("input", CheckPost);
 
@@ -94,9 +114,7 @@ function OpenAddFormulario() {
         addPost(link.value, titulo.value);
         addFormOpen = false;
         guardarButton.removeEventListener("click", handleGuardarClick); // Eliminar el evento después de usarlo
-      } else {
-        OpenEditFormulario();
-      }
+      } 
     }
 
     guardarButton.addEventListener("click", handleGuardarClick);
@@ -170,14 +188,14 @@ addButton.addEventListener("click", OpenAddFormulario);
 const postTextElements = document.querySelectorAll(".post__text");
 const postImageElements = document.querySelectorAll(".post__image");
 
-addPost("images/post/zion-utah.jpg", "Zion Parque Nacional");
-addPost("images/post/yellowstone.jpg", "Parque Yellowstone");
-addPost("images/post/gran-cañon.jpg", "El Gran Cañon");
+addPost("images/images-post/zion-utah.jpg", "Zion Parque Nacional");
+addPost("images/images-post/yellowstone.jpg", "Parque Yellowstone");
+addPost("images/images-post/gran-cañon.jpg", "El Gran Cañon");
 addPost(
   "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
   "Montañas Calvas"
 );
-addPost("images/post/lago-louise.jpg", "Lago de Moraine");
+addPost("images/images-post/lago-louise.jpg", "Lago de Moraine");
 addPost(
   "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
   "Valle de Yosemite"
