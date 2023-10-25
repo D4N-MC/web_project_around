@@ -1,8 +1,8 @@
-const editbutton = document.querySelector(".user__top-normal");
+const editButton = document.querySelector(".user__top-normal");
 const addButton = document.querySelector(".user-add");
 const formulario = document.querySelector(".formulario");
-const PerfilNombre = document.querySelector(".user__top-name");
-const PerfilAbout = document.querySelector(".user__bottom");
+const perfilNombre = document.querySelector(".user__top-name");
+const perfilAbout = document.querySelector(".user__bottom");
 let addFormOpen = false;
 let editFormOpen = false;
 
@@ -20,8 +20,8 @@ function OpenEditFormulario() {
     nombre.placeholder = "Nombre";
     about.placeholder = "Acerca de mi";
 
-    nombre.value = PerfilNombre.textContent;
-    about.value = PerfilAbout.textContent;
+    nombre.value = perfilNombre.textContent;
+    about.value = perfilAbout.textContent;
 
     const submit = document.querySelector(".Guardar");
 
@@ -134,8 +134,8 @@ function SubmitFormulario() {
     const nombreValue = document.getElementById("nombre").value;
     const aboutValue = document.getElementById("about").value;
 
-    PerfilNombre.textContent = nombreValue;
-    PerfilAbout.textContent = aboutValue;
+    perfilNombre.textContent = nombreValue;
+    perfilAbout.textContent = aboutValue;
     CloseFormulario();
   }
 }
@@ -182,7 +182,7 @@ function addPost(postSrc, postText) {
   CloseFormulario();
 }
 
-editbutton.addEventListener("click", OpenEditFormulario);
+editButton.addEventListener("click", OpenEditFormulario);
 addButton.addEventListener("click", OpenAddFormulario);
 
 const postTextElements = document.querySelectorAll(".post__text");
