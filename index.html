@@ -55,23 +55,91 @@
       </div>
     </section>
 
-    <form class="formulario">
+    <form class="formulario-edit" novalidate>
       <div class="Edit">
-        <div class="block">
+        <div class="block-edit">
           <img
-            class="block__close"
+            class="block-edit__close"
             src="images/images-iconos/Close.svg"
             alt="Cerrar formulario"
           />
           <img
-            class="block__close-hover"
+            class="block-edit__close-hover"
             src="images/images-iconos/Close-hover.svg"
             alt="Cerrar formulario"
           />
-          <h4 class="block__text"></h4>
-          <input type="text" id="nombre" placeholder="" required />
-          <input type="text" id="about" placeholder="" required />
-          <button type="button" class="Guardar">Guardar</button>
+          <h4 class="block-edit__text"></h4>
+          <div class="block__input-nombre">
+            <input
+              type="text"
+              id="nombre"
+              placeholder=""
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <p class="error-message"></p>
+          </div>
+          <div class="block__input-about">
+            <input
+              type="text"
+              id="about"
+              placeholder=""
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <p class="error-message"></p>
+          </div>
+          <button type="submit" id="guardar-buttonEdit" class="guardar-edit">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <form class="formulario-add" novalidate>
+      <div class="Add">
+        <div class="block-add">
+          <img
+            class="block-add__close"
+            src="images/images-iconos/Close.svg"
+            alt="Cerrar formulario"
+          />
+          <img
+            class="block-add__close-hover"
+            src="images/images-iconos/Close-hover.svg"
+            alt="Cerrar formulario"
+          />
+          <h4 class="block-add__text"></h4>
+          <div class="block__input-titulo">
+            <input
+              type="text"
+              id="titulo"
+              placeholder=""
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <p class="error-message"></p>
+          </div>
+          <div class="block__input-link">
+            <input
+              type="text"
+              id="link"
+              placeholder=""
+              pattern="https:\/\/.*"
+              required
+            />
+            <p class="error-message"></p>
+          </div>
+          <button
+            type="submit"
+            id="guardar-buttonAdd"
+            class="guardar-disabledAdd"
+          >
+            Guardar
+          </button>
         </div>
       </div>
     </form>
@@ -105,17 +173,26 @@
             src="images/images-post/delete-hover.svg"
             alt="borrar"
           />
-          <img class="post__delete" src="images/images-post/delete.svg" alt="borrar" />
+          <img
+            class="post__delete"
+            src="images/images-post/delete.svg"
+            alt="borrar"
+          />
           <img
             class="post__like-hover"
             src="images/images-post/like-hover.svg"
             alt="like"
           />
-          <img class="post__like" src="images/images-post/like.svg" alt="like" />
+          <img
+            class="post__like"
+            src="images/images-post/like.svg"
+            alt="like"
+          />
         </div>
       </template>
     </section>
 
+    <script src="scripts/validate.js"></script>
     <script src="scripts/script.js"></script>
   </body>
 </html>

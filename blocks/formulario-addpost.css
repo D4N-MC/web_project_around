@@ -1,4 +1,4 @@
-.formulario-edit {
+.formulario-add {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in;
@@ -17,7 +17,7 @@
   transition: opacity 0.3 ease-in;
 }
 
-.Edit {
+.Add {
   width: 100%;
   height: 100%;
   display: flex;
@@ -25,7 +25,7 @@
   justify-content: center;
 }
 
-.block-edit {
+.block-add {
   width: 430px;
   height: 330px;
   background-color: white;
@@ -37,24 +37,24 @@
   position: relative;
 }
 
-.block-edit__close {
+.block-add__close {
   position: absolute;
   right: -35px;
   top: -35px;
   z-index: 4;
 }
 
-.block-edit__close-hover {
+.block-add__close-hover {
   position: absolute;
   right: -35px;
   top: -35px;
 }
 
-.block-edit__close:hover {
+.block-add__close:hover {
   opacity: 0;
 }
 
-.block-edit__text {
+.block-add__text {
   margin: 24px 36px 0 0;
   width: 330px;
   height: 23px;
@@ -64,12 +64,12 @@
   line-height: 29.05px;
 }
 
-.block__input-nombre {
+.block__input-titulo {
   top: 100px;
   position: absolute;
 }
 
-#nombre {
+#titulo {
   width: 358px;
   height: 28px;
   border: none;
@@ -77,16 +77,16 @@
   font-family: Inter;
 }
 
-#nombre.error {
+#titulo.error {
   border-bottom: 2px solid red;
 }
 
-.block__input-about {
+.block__input-link {
   top: 175px;
   position: absolute;
 }
 
-#about {
+#link {
   width: 358px;
   height: 28px;
   border: none;
@@ -94,7 +94,7 @@
   font-family: Inter;
 }
 
-#about.error {
+#link.error {
   border-bottom: 2px solid red;
 }
 
@@ -105,7 +105,7 @@
   color: red;
 }
 
-.guardar-edit {
+.guardar-add {
   width: 358px;
   height: 50px;
   position: absolute;
@@ -115,12 +115,12 @@
   color: white;
 }
 
-.guardar-edit:hover {
+.guardar-add:hover {
   cursor: pointer;
   background: #000000cc;
 }
 
-.guardar-disabledEdit {
+.guardar-disabledAdd {
   width: 358px;
   height: 50px;
   position: absolute;
@@ -135,7 +135,7 @@
 }
 
 @media screen and (max-width: 608px) {
-  .block-edit {
+  .block {
     width: 282px;
     height: 322px;
     background-color: white;
@@ -147,21 +147,21 @@
     position: relative;
   }
 
-  .block-edit__close {
+  .block__close {
     width: 26px;
     height: 26px;
     right: 0;
     top: -33px;
   }
 
-  .block-edit__close-hover {
+  .block__close-hover {
     width: 26px;
     height: 26px;
     right: 0;
     top: -33px;
   }
 
-  .block-edit__text {
+  .block__text {
     margin: 25px 0px 0 0;
     width: 238px;
     height: 22px;
@@ -169,24 +169,24 @@
     line-height: 21.78px;
   }
 
-  #nombre {
+  #titulo {
     width: 238px;
     height: 26px;
     margin-top: 76px;
   }
 
-  #about {
+  #link {
     width: 238px;
     height: 26px;
   }
 
-  .guardar-edit {
+  .guardar-add {
     width: 238px;
     height: 46px;
     margin-top: 46px;
   }
 
-  .guardar-disabledEdit {
+  .guardar-disabledAdd {
     width: 238px;
     height: 46px;
     margin-top: 46px;

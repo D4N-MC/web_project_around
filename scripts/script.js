@@ -1,20 +1,31 @@
 const editButton = document.querySelector(".user__top-normal");
 const addButton = document.querySelector(".user-add");
-const formulario = document.querySelector(".formulario");
+const formularioEdit = document.querySelector(".formulario-edit");
+const formularioAdd = document.querySelector(".formulario-add");
 const perfilNombre = document.querySelector(".user__top-name");
 const perfilAbout = document.querySelector(".user__bottom");
 let addFormOpen = false;
 let editFormOpen = false;
+const submitButtonEdit = document.getElementById("guardar-buttonEdit");
+const submitButtonAdd = document.getElementById("guardar-buttonAdd");
+let editFormSubmitted = false;
+let addFormSubmitted = false;
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    CloseFormulario();
+  }
+});
 
 function OpenEditFormulario() {
   if (!editFormOpen) {
-    formulario.classList.add("popup_opened");
-    const closebutton = document.querySelector(".block__close");
+    formularioEdit.classList.add("popup_opened");
+    const closebutton = document.querySelector(".block-edit__close");
     closebutton.addEventListener("click", CloseFormulario);
 
     const nombre = document.getElementById("nombre");
     const about = document.getElementById("about");
-    const formTitulo = document.querySelector(".block__text");
+    const formTitulo = document.querySelector(".block-edit__text");
 
     formTitulo.textContent = "Editar perfil";
     nombre.placeholder = "Nombre";
@@ -23,27 +34,112 @@ function OpenEditFormulario() {
     nombre.value = perfilNombre.textContent;
     about.value = perfilAbout.textContent;
 
-    const submit = document.querySelector(".Guardar");
+    editFormSubmitted = true;
+
+    hideInputError(nombre);
+    hideInputError(about);
+
+    enableValidation();
 
     function CheckGuardar() {
       if (editFormOpen) {
-        if (nombre.value === "" || about.value === "") {
-          submit.classList.remove("Guardar");
-          submit.classList.add("Guardar-disabled");
+        checkInputValidity(nombre);
+        checkInputValidity(about);
+
+        if (nombre.validity.valid && about.validity.valid) {
+          submitButtonEdit.classList.add("guardar-edit");
+          submitButtonEdit.classList.remove("guardar-disabledEdit");
+          submitButtonEdit.addEventListener("click", function (event) {
+            SubmitFormulario();
+          });
+          editFormSubmitted = true;
         } else {
-          submit.classList.add("Guardar");
-          submit.classList.remove("Guardar-disabled");
-          submit.addEventListener("click", SubmitFormulario);
+          submitButtonEdit.classList.remove("guardar-edit");
+          submitButtonEdit.classList.add("guardar-disabledEdit");
+          editFormSubmitted = false;
         }
       }
     }
 
-    CheckGuardar();
+    nombre.addEventListener("input", function () {
+      hideInputError(nombre);
+      CheckGuardar();
+    });
+    about.addEventListener("input", function () {
+      hideInputError(about);
+      CheckGuardar();
+    });
 
-    nombre.addEventListener("input", CheckGuardar);
-    about.addEventListener("input", CheckGuardar);
+    submitButtonEdit.addEventListener("click", function (event) {
+      if (!nombre.validity.valid) {
+        showInputError(nombre, "Este campo es obligatorio");
+        editFormSubmitted = false;
+      }
 
-    submit.addEventListener("click", SubmitFormulario);
+      if (!about.validity.valid) {
+        showInputError(about, "Este campo es obligatorio");
+        editFormSubmitted = false;
+      }
+
+      if (!nombre.validity.valid || !about.validity.valid) {
+        event.preventDefault();
+        editFormSubmitted = false;
+      } else {
+        SubmitFormulario();
+        editFormSubmitted = true;
+      }
+    });
+
+    nombre.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && editFormOpen) {
+        if (editFormSubmitted === false) {
+          event.preventDefault();
+          CheckGuardar();
+          return;
+        }
+        if (
+          editFormSubmitted === true &&
+          nombre.validity.valid &&
+          about.validity.valid &&
+          submitButtonEdit.classList.contains("guardar-edit") &&
+          !submitButtonEdit.classList.contains("guardar-disabledEdit")
+        ) {
+          event.preventDefault();
+          CheckGuardar();
+          SubmitFormulario();
+          editFormSubmitted = true;
+        }
+      }
+    });
+
+    about.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && editFormOpen) {
+        if (editFormSubmitted === false) {
+          event.preventDefault();
+          CheckGuardar();
+          return;
+        }
+        if (
+          editFormSubmitted === true &&
+          nombre.validity.valid &&
+          about.validity.valid &&
+          submitButtonEdit.classList.contains("guardar-edit") &&
+          !submitButtonEdit.classList.contains("guardar-disabledEdit")
+        ) {
+          event.preventDefault();
+          CheckGuardar();
+          SubmitFormulario();
+          editFormSubmitted = true;
+        }
+      }
+    });
+
+    const editBlock = document.querySelector(".block-edit");
+    formularioEdit.addEventListener("mousedown", function (event) {
+      if (!editBlock.contains(event.target)) {
+        CloseFormulario();
+      }
+    });
 
     editFormOpen = true;
     addFormOpen = false;
@@ -52,17 +148,17 @@ function OpenEditFormulario() {
 
 function OpenAddFormulario() {
   if (!addFormOpen) {
-    formulario.classList.add("popup_opened");
-    const closebutton = document.querySelector(".block__close");
-    closebutton.addEventListener("click", function(){
+    formularioAdd.classList.add("popup_opened");
+    const closebutton = document.querySelector(".block-add__close");
+    closebutton.addEventListener("click", function () {
       CloseFormulario();
-     guardarButton.classList.add("Guardar");
-     guardarButton.classList.remove("Guardar-disabled"); 
+      submitButtonAdd.classList.add("guardar-add");
+      submitButtonAdd.classList.remove("guardar-disabledAdd");
     });
 
-    const titulo = document.getElementById("nombre");
-    const link = document.getElementById("about");
-    const formTitulo = document.querySelector(".block__text");
+    const titulo = document.getElementById("titulo");
+    const link = document.getElementById("link");
+    const formTitulo = document.querySelector(".block-add__text");
 
     formTitulo.textContent = "Nuevo Lugar";
     titulo.placeholder = "Titulo";
@@ -71,62 +167,143 @@ function OpenAddFormulario() {
     titulo.value = "";
     link.value = "";
 
-    let guardarButton = document.querySelector(".Guardar");
+    addFormSubmitted = false;
 
-    guardarButton.classList.remove("Guardar");
-    guardarButton.classList.add("Guardar-disabled");
+    hideInputError(titulo);
+    hideInputError(link);
+
+    enableValidation();
 
     CheckPost();
+    addFormOpen = true;
 
     function CheckPost() {
-      if (addFormOpen) {
-        if (titulo.value === "" || link.value === "") {
-          guardarButton.classList.remove("Guardar");
-          guardarButton.classList.add("Guardar-disabled");
+      if (addFormOpen === true) {
+        checkInputValidity(titulo);
+        checkInputValidity(link);
+
+        if (!titulo.validity.valid || !link.validity.valid) {
+          submitButtonAdd.classList.remove("guardar-add");
+          submitButtonAdd.classList.add("guardar-disabledAdd");
+          addFormSubmitted = false;
         } else {
-          guardarButton.classList.add("Guardar");
-          guardarButton.classList.remove("Guardar-disabled");
+          submitButtonAdd.classList.add("guardar-add");
+          submitButtonAdd.classList.remove("guardar-disabledAdd");
+          submitButtonAdd.addEventListener("click", function (event) {
+            handleGuardarClick();
+          });
+          addFormSubmitted = true;
         }
       }
     }
 
+    submitButtonAdd.addEventListener("click", function (event) {
+      if (!titulo.validity.valid) {
+        showInputError(titulo, "Este campo es obligatorio");
+        addFormSubmitted = false;
+      }
+
+      if (!link.validity.valid) {
+        showInputError(link, "Ingrese una URL empezando por https://");
+        addFormSubmitted = false;
+      }
+
+      if (!titulo.validity.valid || !link.validity.valid) {
+        event.preventDefault();
+        addFormSubmitted = false;
+      } else {
+        handleGuardarClick();
+        addFormSubmitted = true;
+      }
+    });
     //
     titulo.addEventListener("keydown", function (event) {
-      if (titulo.value !== "" && link.value !== "" && event.key === "Enter" && addFormOpen) {
-        event.preventDefault();
-        handleGuardarClick();
+      if (event.key === "Enter" && addFormOpen) {
+        if (addFormSubmitted === false) {
+          event.preventDefault();
+          CheckPost();
+          return;
+        }
+        if (
+          addFormSubmitted === true &&
+          titulo.validity.valid &&
+          link.validity.valid &&
+          guardarButton.classList.contains("guardar-add") &&
+          !guardarButton.classList.contains("guardar-disabledAdd")
+        ) {
+          event.preventDefault();
+          handleGuardarClick();
+          addFormSubmitted = true;
+        }
       }
     });
-    
-    link.addEventListener("keydown", function (event) {
-      if (titulo.value !== "" && link.value !== "" && event.key === "Enter" && addFormOpen) {
-        event.preventDefault();
-        handleGuardarClick();
-      }
-    });
-    //
 
-    titulo.addEventListener("input", CheckPost);
-    link.addEventListener("input", CheckPost);
+    link.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && addFormOpen) {
+        if (addFormSubmitted === false) {
+          event.preventDefault();
+          CheckPost();
+          return;
+        }
+        if (
+          addFormSubmitted === true &&
+          titulo.validity.valid &&
+          link.validity.valid &&
+          guardarButton.classList.contains("guardar-add") &&
+          !guardarButton.classList.contains("guardar-disabledAdd")
+        ) {
+          event.preventDefault();
+          handleGuardarClick();
+          addFormSubmitted = true;
+        }
+      }
+    });
+
+    titulo.addEventListener("input", function () {
+      hideInputError(titulo);
+      CheckPost();
+    });
+
+    link.addEventListener("input", function () {
+      hideInputError(link);
+      CheckPost();
+    });
 
     function handleGuardarClick() {
+      CheckPost();
       if (addFormOpen) {
         addPost(link.value, titulo.value);
         addFormOpen = false;
-        guardarButton.removeEventListener("click", handleGuardarClick); // Eliminar el evento después de usarlo
-      } 
+        submitButtonAdd.removeEventListener("click", handleGuardarClick);
+      }
     }
 
-    guardarButton.addEventListener("click", handleGuardarClick);
+    const addBlock = document.querySelector(".block-add");
+    formularioAdd.addEventListener("mousedown", function (event) {
+      if (!addBlock.contains(event.target)) {
+        CloseFormulario();
+      }
+    });
+
+    submitButtonAdd.addEventListener("click", handleGuardarClick);
     addFormOpen = true;
     editFormOpen = false;
   }
 }
 
 function CloseFormulario() {
-  formulario.classList.remove("popup_opened");
+  formularioEdit.classList.remove("popup_opened");
+  formularioAdd.classList.remove("popup_opened");
   addFormOpen = false;
   editFormOpen = false;
+  addFormSubmitted = false;
+  editFormSubmitted = false;
+
+  submitButtonEdit.classList.add("guardar-edit");
+  submitButtonEdit.classList.remove("guardar-disabledEdit");
+  submitButtonEdit.addEventListener("click", SubmitFormulario);
+  submitButtonAdd.classList.remove("guardar-add");
+  submitButtonAdd.classList.add("guardar-disabledAdd");
 }
 
 function SubmitFormulario() {
@@ -163,6 +340,7 @@ function addPost(postSrc, postText) {
       const bigImage = imagePopup.querySelector(".image-popup__image");
       const name = imagePopup.querySelector(".image-popup__name");
       const closePopup = imagePopup.querySelector(".image-popup__close");
+      const imagePopupContent = document.querySelector(".image-popup__content");
 
       const imageUrl = postImage.src;
       const postName = postText;
@@ -171,6 +349,12 @@ function addPost(postSrc, postText) {
       name.textContent = postName;
 
       imagePopup.classList.add("active");
+
+      imagePopup.addEventListener("mousedown", function (event) {
+        if (!imagePopupContent.contains(event.target)) {
+          imagePopup.classList.remove("active");
+        }
+      });
 
       closePopup.addEventListener("click", function () {
         imagePopup.classList.remove("active");
