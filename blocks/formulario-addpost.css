@@ -64,7 +64,7 @@
   line-height: 29.05px;
 }
 
-.block__input-titulo {
+.block-add__titulo {
   top: 100px;
   position: absolute;
 }
@@ -81,7 +81,7 @@
   border-bottom: 2px solid red;
 }
 
-.block__input-link {
+.block-add__link {
   top: 175px;
   position: absolute;
 }

@@ -64,7 +64,7 @@
   line-height: 29.05px;
 }
 
-.block__input-nombre {
+.block-edit__nombre {
   top: 100px;
   position: absolute;
 }
@@ -81,7 +81,7 @@
   border-bottom: 2px solid red;
 }
 
-.block__input-about {
+.block-edit__about {
   top: 175px;
   position: absolute;
 }

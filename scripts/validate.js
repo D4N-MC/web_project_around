@@ -39,8 +39,8 @@ const enableValidation = () => {
     evt.preventDefault();
   });
 
-  setEventListeners(formularioEdit, "block__input-nombre");
-  setEventListeners(formularioEdit, "block__input-about");
-  setEventListeners(formularioAdd, "block__input-titulo");
-  setEventListeners(formularioAdd, "block__input-link");
+  setEventListeners(formularioEdit, "block-edit__nombre");
+  setEventListeners(formularioEdit, "block-edit__about");
+  setEventListeners(formularioAdd, "block-add__titulo");
+  setEventListeners(formularioAdd, "block-add__link");
 };
