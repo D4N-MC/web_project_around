@@ -98,12 +98,12 @@
   border-bottom: 2px solid red;
 }
 
-.error-message {
+/*.error-message {
   width: 358px;
   font-family: Inter;
   font-size: 12px;
   color: red;
-}
+}*/
 
 .guardar-add {
   width: 358px;
@@ -135,7 +135,7 @@
 }
 
 @media screen and (max-width: 608px) {
-  .block {
+  .block-add {
     width: 282px;
     height: 322px;
     background-color: white;
@@ -147,21 +147,21 @@
     position: relative;
   }
 
-  .block__close {
+  .block-add__close {
     width: 26px;
     height: 26px;
     right: 0;
     top: -33px;
   }
 
-  .block__close-hover {
+  .block-add__close-hover {
     width: 26px;
     height: 26px;
     right: 0;
     top: -33px;
   }
 
-  .block__text {
+  .block-add__text {
     margin: 25px 0px 0 0;
     width: 238px;
     height: 22px;
@@ -169,10 +169,20 @@
     line-height: 21.78px;
   }
 
+  .block-add__titulo{
+    top: 85px;
+    left:13px;
+    width:270px;
+  }
+
   #titulo {
     width: 238px;
     height: 26px;
-    margin-top: 76px;
+  }
+
+  .block-add__link {
+    top: 155px;
+    left:13px;
   }
 
   #link {
@@ -183,12 +193,10 @@
   .guardar-add {
     width: 238px;
     height: 46px;
-    margin-top: 46px;
   }
 
   .guardar-disabledAdd {
     width: 238px;
     height: 46px;
-    margin-top: 46px;
   }
 }

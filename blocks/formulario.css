@@ -135,6 +135,13 @@
 }
 
 @media screen and (max-width: 608px) {
+  .error-message {
+    width: 238px;
+    font-size: 10px;
+    margin-top:7px;
+    color: red;
+  }
+
   .block-edit {
     width: 282px;
     height: 322px;
@@ -169,10 +176,20 @@
     line-height: 21.78px;
   }
 
+  .block-edit__nombre {
+    top: 85px;
+    left:13px;
+    width:270px;
+  }
+  
   #nombre {
     width: 238px;
     height: 26px;
-    margin-top: 76px;
+  }
+
+  .block-edit__about {
+    top: 155px;
+    left:13px;
   }
 
   #about {
@@ -183,12 +200,10 @@
   .guardar-edit {
     width: 238px;
     height: 46px;
-    margin-top: 46px;
   }
 
   .guardar-disabledEdit {
     width: 238px;
     height: 46px;
-    margin-top: 46px;
   }
 }
