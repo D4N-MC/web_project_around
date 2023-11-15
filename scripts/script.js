@@ -14,6 +14,7 @@ let addFormSubmitted = false;
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     CloseFormulario();
+    document.querySelector(".image-popup").classList.remove("active");
   }
 });
 
