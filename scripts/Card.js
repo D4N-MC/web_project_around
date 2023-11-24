@@ -33,10 +33,11 @@ export const popupImage = document.querySelector(".image-popup__image");
 export const popupCloseButton = document.querySelector(".image-popup__close");
 export const popupName = document.querySelector(".image-popup__name");
 
-class Card {
-  constructor(cardName, image) {
+export class Card {
+  constructor(cardName, image, altText = cardName) {
     this._cardName = cardName;
     this._image = image;
+    this._altText = altText;
   }
   _getTemplate() {
     const cardElement = document
@@ -49,6 +50,7 @@ class Card {
 
     cardNameElement.textContent = this._cardName;
     cardImageElement.src = this._image;
+    cardImageElement.alt = this._altText;
 
     return cardElement;
   }
@@ -116,5 +118,3 @@ items.forEach((item) => {
   card.generateCard();
   cardList.appendChild(card._element);
 });
-
-export default Card;

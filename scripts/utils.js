@@ -1,21 +1,12 @@
-import Card from "./card.js";
 import {
+  Card,
   items,
   cardList,
   popupElement,
   popupImage,
   popupCloseButton,
-  popupName,
+  popupName
 } from "./card.js";
-import {
-  FormValidator,
-  nombreFormValidator,
-  aboutFormValidator,
-  tituloFormValidator,
-  linkFormValidator,
-  editValid,
-  addValid,
-} from "./FormValidator.js";
 //Seccion del perfil del usuario
 export const editButton = document.querySelector(".user__top-normal");
 export const addButton = document.querySelector(".user-add");
@@ -106,11 +97,42 @@ export class FormEdit extends Form {
         this._handleEnterKeyPress();
       }
     });
+
+    editNombre.addEventListener("input", () => {
+      if(editNombre.validity.valid && editAbout.validity.valid){
+        this._enableSubmit();
+      } else {                  
+        this._disableSubmit();
+      }
+    });
+    editAbout.addEventListener("input", () => {
+      if(editNombre.validity.valid && editAbout.validity.valid){
+        this._enableSubmit();
+      } else {                  
+        this._disableSubmit();
+      }
+    });
   }
   _handleEnterKeyPress() {
-    if (editValid === true) {
+    if (editNombre.validity.valid && editAbout.validity.valid) {
       this._handleSubmitForm();
     }
+  }
+  _disableSubmit(){
+    document
+        .getElementById("guardar-buttonEdit")
+        .classList.remove("guardar-edit");
+      document
+        .getElementById("guardar-buttonEdit")
+        .classList.add("guardar-disabledEdit");
+  }
+  _enableSubmit(){
+    document
+        .getElementById("guardar-buttonEdit")
+        .classList.add("guardar-edit");
+      document
+        .getElementById("guardar-buttonEdit")
+        .classList.remove("guardar-disabledEdit");
   }
 
   _handleSubmitForm() {
@@ -155,12 +177,42 @@ export class FormAdd extends Form {
         this._handleEnterKeyPress();
       }
     });
+
+    addTitulo.addEventListener("input", () => {
+      if(addTitulo.validity.valid && addLink.validity.valid){
+        this._enableSubmit();
+      } else {
+        this._disableSubmit();
+      }
+    });
+    addLink.addEventListener("input", () => {
+      if(addTitulo.validity.valid && addLink.validity.valid){
+        this._enableSubmit();
+      } else {
+        this._disableSubmit();
+      }
+    });
   }
 
   _handleEnterKeyPress() {
-    if (addValid === true) {
+    if (addTitulo.validity.valid && addLink.validity.valid) {
       this._handleSubmitForm();
     }
+  }
+
+  _disableSubmit(){
+    document
+        .getElementById("guardar-buttonAdd")
+        .classList.remove("guardar-add");
+      document
+        .getElementById("guardar-buttonAdd")
+        .classList.add("guardar-disabledAdd");
+  }
+  _enableSubmit(){
+    document.getElementById("guardar-buttonAdd").classList.add("guardar-add");
+      document
+        .getElementById("guardar-buttonAdd")
+        .classList.remove("guardar-disabledAdd");
   }
   _emptyInputs() {
     this._titleInput.value = "";

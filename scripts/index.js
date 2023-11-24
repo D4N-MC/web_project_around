@@ -23,13 +23,10 @@ import {
 } from "./utils.js";
 
 import {
-  FormValidator,
   nombreFormValidator,
   aboutFormValidator,
   tituloFormValidator,
-  linkFormValidator,
-  editValid,
-  addValid,
+  linkFormValidator
 } from "./FormValidator.js";
 
 //formulario Edit
@@ -38,20 +35,20 @@ const editForm = new FormEdit(editFormElement, userName, userAbout);
 editButton.addEventListener("click", () => {
   editForm.handleOpenForm();
   editForm.setInitialValues();
+  editForm._enableSubmit();
   nombreFormValidator.checkInputValidity();
   aboutFormValidator.checkInputValidity();
   nombreFormValidator.hideInputError();
   aboutFormValidator.hideInputError();
-  editValid = true;
 });
+
+
 //formulario Add
 const addForm = new FormAdd(addFormElement);
 addButton.addEventListener("click", () => {
   addForm.handleOpenForm();
   addForm._emptyInputs();
+  addForm._disableSubmit();
   tituloFormValidator.hideInputError();
   linkFormValidator.hideInputError();
-  addSave.classList.remove("guardar-add");
-  addSave.classList.add("guardar-disabledAdd");
-  addValid = false;
 });
