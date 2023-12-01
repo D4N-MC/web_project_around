@@ -1,7 +1,7 @@
 export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
-    this._content = this._popup.querySelector("#contentPopup");
+    this._content = this._popup.querySelector(".contentPopup");
     this.setEventListeners();
   }
 
