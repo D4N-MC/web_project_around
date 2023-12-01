@@ -1,3 +1,5 @@
+import { Popup, PopupWithImage} from "./Popup.js";
+import { Section } from "./Section.js";
 export const items = [
   {
     image: "images/images-post/zion-utah.jpg",
@@ -33,6 +35,8 @@ export const popupImage = document.querySelector(".image-popup__image");
 export const popupCloseButton = document.querySelector(".image-popup__close");
 export const popupName = document.querySelector(".image-popup__name");
 
+const popupWithImage = new PopupWithImage(".image-popup");
+
 export class Card {
   constructor(cardName, image, altText = cardName) {
     this._cardName = cardName;
@@ -54,15 +58,9 @@ export class Card {
 
     return cardElement;
   }
-  _handleOpenPopup() {
-    popupImage.src = this._image;
-    if (popupName) {
-      popupName.textContent = this._cardName.textContent || this._cardName;
-    }
-    popupElement.classList.add("active");
-  }
-  _handleClosePopup() {
-    popupElement.classList.remove("active");
+
+  _handleCardClick(){
+      popupWithImage.open(this._image, this._cardName);
   }
 
   _handleLike() {
@@ -80,22 +78,8 @@ export class Card {
     this._element
       .querySelector(".post__image")
       .addEventListener("click", () => {
-        this._handleOpenPopup();
+        this._handleCardClick();
       });
-
-    popupCloseButton.addEventListener("click", () => {
-      this._handleClosePopup();
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        this._handleClosePopup();
-      }
-    });
-    document.addEventListener("mousedown", (event) => {
-      if (!popupImage.contains(event.target)) {
-        this._handleClosePopup();
-      }
-    });
 
     this._element.querySelector(".post__like").addEventListener("click", () => {
       this._handleLike();
@@ -110,11 +94,12 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
+    return this._element;
   }
 }
 
-items.forEach((item) => {
-  const card = new Card(item.text, item.image);
-  card.generateCard();
-  cardList.appendChild(card._element);
-});
+//items.forEach((item) => {
+  //const card = new Card(item.text, item.image);
+ // card.generateCard();
+ // cardList.appendChild(card._element);
+//});

@@ -55,11 +55,11 @@
       </div>
     </section>
 
-    <form class="formulario-edit" novalidate>
+    <form id="form" class="formulario-edit" novalidate>
       <div class="Edit">
-        <div class="block-edit">
+        <div id="contentPopup" class="block-edit">
           <img
-            class="block-edit__close"
+            class="block-edit__close closeButton"
             src="images/images-iconos/Close.svg"
             alt="Cerrar formulario"
           />
@@ -73,6 +73,7 @@
             <input
               type="text"
               id="nombre"
+              class="input"
               placeholder="Nombre"
               minlength="2"
               maxlength="40"
@@ -84,6 +85,7 @@
             <input
               type="text"
               id="about"
+              class="input"
               placeholder="Ocupación"
               minlength="2"
               maxlength="200"
@@ -91,18 +93,18 @@
             />
             <p class="error-message"></p>
           </div>
-          <button type="submit" id="guardar-buttonEdit" class="guardar-edit">
+          <button type="submit" id="guardar-buttonEdit" class="guardar-edit submit">
             Guardar
           </button>
         </div>
       </div>
     </form>
 
-    <form class="formulario-add" novalidate>
+    <form id="form" class="formulario-add" novalidate>
       <div class="Add">
-        <div class="block-add">
+        <div id="contentPopup" class="block-add">
           <img
-            class="block-add__close"
+            class="block-add__close closeButton"
             src="images/images-iconos/Close.svg"
             alt="Cerrar formulario"
           />
@@ -116,6 +118,7 @@
             <input
               type="text"
               id="titulo"
+              class="input"
               placeholder="Titulo"
               minlength="2"
               maxlength="30"
@@ -127,6 +130,7 @@
             <input
               type="text"
               id="link"
+              class="input"
               placeholder="Dirección URL de la imagen"
               pattern="https:\/\/.*"
               required
@@ -136,7 +140,7 @@
           <button
             type="submit"
             id="guardar-buttonAdd"
-            class="guardar-disabledAdd"
+            class="guardar-disabledAdd submit"
           >
             Guardar
           </button>
@@ -146,11 +150,11 @@
 
     <div class="image-popup">
       <div class="Edit">
-        <div class="image-popup__content">
+        <div id="contentPopup" class="image-popup__content">
           <img alt="Imagen grande del post" class="image-popup__image" />
           <p class="image-popup__name"></p>
           <img
-            class="image-popup__close"
+            class="image-popup__close closeButton"
             src="images/images-iconos/Close.svg"
             alt="Cerrar formulario"
           />

@@ -1,25 +1,15 @@
+import { Section } from "./Section.js";
 import {
   editButton,
   addButton,
   userName,
   userAbout,
   editFormElement,
-  editHeader,
-  editNombre,
-  editAbout,
-  editClose,
-  editSave,
-  editBlock,
   addFormElement,
-  addHeader,
-  addTitulo,
-  addLink,
-  addClose,
-  addSave,
-  addBlock,
-  Form,
   FormEdit,
   FormAdd,
+  editPopup,
+  addPopup
 } from "./utils.js";
 
 import {
@@ -29,11 +19,24 @@ import {
   linkFormValidator
 } from "./FormValidator.js";
 
+import{ Card, items} from "./Card.js";
+
+export const cardSection = new Section({
+  items: items,
+  renderer: (item) => {
+    const card = new Card(item.text, item.image);
+    card.generateCard();
+    cardSection.addItem(card._element);
+  },
+}, ".images")
+
+cardSection.render();
+
 //formulario Edit
-const editForm = new FormEdit(editFormElement, userName, userAbout);
+const editForm = new FormEdit(editFormElement);
 
 editButton.addEventListener("click", () => {
-  editForm.handleOpenForm();
+  editPopup.open();
   editForm.setInitialValues();
   editForm._enableSubmit();
   nombreFormValidator.checkInputValidity();
@@ -42,11 +45,10 @@ editButton.addEventListener("click", () => {
   aboutFormValidator.hideInputError();
 });
 
-
 //formulario Add
 const addForm = new FormAdd(addFormElement);
 addButton.addEventListener("click", () => {
-  addForm.handleOpenForm();
+  addPopup.open();
   addForm._emptyInputs();
   addForm._disableSubmit();
   tituloFormValidator.hideInputError();
