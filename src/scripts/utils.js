@@ -1,14 +1,7 @@
-import {
-  Card,
-  items,
-  cardList,
-  popupElement,
-  popupImage,
-  popupCloseButton,
-  popupName
-} from "./Card.js";
-import { Popup, PopupWithForm} from "./Popup.js";
-import {UserInfo} from "./UserInfo.js";
+import "../index.css";
+import { Card } from "./Card.js";
+import { Popup, PopupWithForm } from "./Popup.js";
+import { UserInfo } from "./UserInfo.js";
 import { cardSection } from "./index.js";
 //Seccion del perfil del usuario
 export const editButton = document.querySelector(".user__top-normal");
@@ -36,13 +29,16 @@ export class Form {
   }
 }
 
-export const editPopup = new PopupWithForm('.formulario-edit', (inputValues) => {
-  console.log('Valores del Usuario:', inputValues);
-});
+export const editPopup = new PopupWithForm(
+  ".formulario-edit",
+  (inputValues) => {
+    console.log("Valores del Usuario:", inputValues);
+  }
+);
 
 export const userInfoInstance = new UserInfo({
   nameSelector: ".user__top-name",
-  aboutSelector: ".user__bottom"
+  aboutSelector: ".user__bottom",
 });
 
 export class FormEdit extends Form {
@@ -57,7 +53,7 @@ export class FormEdit extends Form {
   }
 
   setInitialValues() {
-    const { name, about } = userInfoInstance.getUserInfo()
+    const { name, about } = userInfoInstance.getUserInfo();
     this._nombreInput.value = name;
     this._aboutInput.value = about;
   }
@@ -76,16 +72,16 @@ export class FormEdit extends Form {
     });
 
     editNombre.addEventListener("input", () => {
-      if(editNombre.validity.valid && editAbout.validity.valid){
+      if (editNombre.validity.valid && editAbout.validity.valid) {
         this._enableSubmit();
-      } else {                  
+      } else {
         this._disableSubmit();
       }
     });
     editAbout.addEventListener("input", () => {
-      if(editNombre.validity.valid && editAbout.validity.valid){
+      if (editNombre.validity.valid && editAbout.validity.valid) {
         this._enableSubmit();
-      } else {                  
+      } else {
         this._disableSubmit();
       }
     });
@@ -95,33 +91,31 @@ export class FormEdit extends Form {
       this._handleSubmitForm();
     }
   }
-  _disableSubmit(){
+  _disableSubmit() {
     document
-        .getElementById("guardar-buttonEdit")
-        .classList.remove("guardar-edit");
-      document
-        .getElementById("guardar-buttonEdit")
-        .classList.add("guardar-disabledEdit");
+      .getElementById("guardar-buttonEdit")
+      .classList.remove("guardar-edit");
+    document
+      .getElementById("guardar-buttonEdit")
+      .classList.add("guardar-disabledEdit");
   }
-  _enableSubmit(){
+  _enableSubmit() {
+    document.getElementById("guardar-buttonEdit").classList.add("guardar-edit");
     document
-        .getElementById("guardar-buttonEdit")
-        .classList.add("guardar-edit");
-      document
-        .getElementById("guardar-buttonEdit")
-        .classList.remove("guardar-disabledEdit");
+      .getElementById("guardar-buttonEdit")
+      .classList.remove("guardar-disabledEdit");
   }
 
   _handleSubmitForm() {
     userInfoInstance.setUserInfo({
       name: this._nombreInput.value,
-      about: this._aboutInput.value
-    })
+      about: this._aboutInput.value,
+    });
     editPopup.close();
   }
 }
 
-export const addPopup = new PopupWithForm('.formulario-add', (inputValues) => {
+export const addPopup = new PopupWithForm(".formulario-add", (inputValues) => {
   ///no es necesario mostrar los valores de addPopup
 });
 
@@ -147,14 +141,14 @@ export class FormAdd extends Form {
     });
 
     addTitulo.addEventListener("input", () => {
-      if(addTitulo.validity.valid && addLink.validity.valid){
+      if (addTitulo.validity.valid && addLink.validity.valid) {
         this._enableSubmit();
       } else {
         this._disableSubmit();
       }
     });
     addLink.addEventListener("input", () => {
-      if(addTitulo.validity.valid && addLink.validity.valid){
+      if (addTitulo.validity.valid && addLink.validity.valid) {
         this._enableSubmit();
       } else {
         this._disableSubmit();
@@ -168,19 +162,19 @@ export class FormAdd extends Form {
     }
   }
 
-  _disableSubmit(){
+  _disableSubmit() {
     document
-        .getElementById("guardar-buttonAdd")
-        .classList.remove("guardar-add");
-      document
-        .getElementById("guardar-buttonAdd")
-        .classList.add("guardar-disabledAdd");
+      .getElementById("guardar-buttonAdd")
+      .classList.remove("guardar-add");
+    document
+      .getElementById("guardar-buttonAdd")
+      .classList.add("guardar-disabledAdd");
   }
-  _enableSubmit(){
+  _enableSubmit() {
     document.getElementById("guardar-buttonAdd").classList.add("guardar-add");
-      document
-        .getElementById("guardar-buttonAdd")
-        .classList.remove("guardar-disabledAdd");
+    document
+      .getElementById("guardar-buttonAdd")
+      .classList.remove("guardar-disabledAdd");
   }
   _emptyInputs() {
     this._titleInput.value = "";

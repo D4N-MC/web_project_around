@@ -1,20 +1,58 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './scripts/index.js',   // Ruta del archivo de entrada principal de tu aplicación
+  devtool: 'inline-source-map',
+  entry: {
+    main: './src/scripts/index.js'
+  },
   output: {
-    filename: 'bundle.js',   // Nombre del archivo de salida después de la construcción
-    path: path.resolve(__dirname, 'dist'),   // Carpeta de salida después de la construcción
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
+    publicPath: ''
   },
-  module:{
-    rules: [
-        {
-            test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-        },
-    ],
+  target: ['web', 'es5'],
+  stats: { children: true },
+  mode: 'development',
+  devServer: {
+    static: path.resolve(__dirname, './dist'),
+    compress: true,
+    port: 8080,
+    open: true
   },
-};
+  module: {
+    rules: [ 
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: "/node_modules/"
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1
+            }
+          },
+          "postcss-loader"
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
+        type: "asset/resource"
+      },
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html"
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin()
+  ]
+}

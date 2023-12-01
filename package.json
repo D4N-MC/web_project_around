@@ -1,21 +1,30 @@
 {
-  "name": "web_project_around",
+  "name": "TripleTen",
   "version": "1.0.0",
-  "description": "1. #### Organize mi repositorio y mi carpeta donde trabaje mi proyecto.\r 2. #### Cree la estructura base de mi HTML.\r 3. #### Empeze a diseñar los estilos de la pagina web en 1280px.\r 4. #### Programé la función del boton de edición para que se abriera el cuadro de editar el nombre y ocupacion.\r 5. #### Programé las nuevas ventanas emergentes con js y css tambien añadi la funcion de añadir borrar y dar like a los post.\r 6. #### Investigue y me ayude de fuentes de Internet para poder hacer mi javascript totalmente funcional.\r 7. #### Terminé haciendo los diseños responsivos para diferentes tamaños de pantalla.\r 8. #### Añadi validaciones a los formularios con js y re-escribi mi codigo más organizadamente utilizando las clases en Js.",
+  "description": "Plataforma educativa",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development --open"
+    "dev": "webpack serve"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.23.5",
-    "@babel/preset-env": "^7.23.5",
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "autoprefixer": "^10.4.16",
     "babel-loader": "^9.1.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "core-js": "^3.33.3"
   }
 }

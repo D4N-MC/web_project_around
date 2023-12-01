@@ -2,33 +2,34 @@ import { Section } from "./Section.js";
 import {
   editButton,
   addButton,
-  userName,
-  userAbout,
   editFormElement,
   addFormElement,
   FormEdit,
   FormAdd,
   editPopup,
-  addPopup
+  addPopup,
 } from "./utils.js";
 
 import {
   nombreFormValidator,
   aboutFormValidator,
   tituloFormValidator,
-  linkFormValidator
+  linkFormValidator,
 } from "./FormValidator.js";
 
-import{ Card, items} from "./Card.js";
+import { Card, items } from "./Card.js";
 
-export const cardSection = new Section({
-  items: items,
-  renderer: (item) => {
-    const card = new Card(item.text, item.image);
-    card.generateCard();
-    cardSection.addItem(card._element);
+export const cardSection = new Section(
+  {
+    items: items,
+    renderer: (item) => {
+      const card = new Card(item.text, item.image);
+      card.generateCard();
+      cardSection.addItem(card._element);
+    },
   },
-}, ".images")
+  ".images"
+);
 
 cardSection.render();
 

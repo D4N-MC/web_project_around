@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="index.css" />
     <title>Around the US</title>
   </head>
   <body class="page">
@@ -11,7 +10,7 @@
       <h1>
         <img
           class="header__icon"
-          src="images/images-logo/around-us.svg"
+          src="<%= require('./images/images-logo/around-us.svg')%>"
           alt="around-us"
         />
       </h1>
@@ -20,7 +19,7 @@
     <section class="info">
       <img
         class="user-photo"
-        src="images/images-info/photo.png"
+        src="<%= require('./images/images-info/photo.png')%>"
         alt="foto de perfil"
       />
       <div class="user">
@@ -29,12 +28,12 @@
           <div class="user__edit-buttons">
             <img
               class="user__top-hover"
-              src="images/images-info/Edit-hover.png"
+              src="<%= require('./images/images-info/Edit-hover.png')%>"
               alt="boton de editar"
             />
             <img
               class="user__top-normal"
-              src="images/images-info/Edit.png"
+              src="<%= require('./images/images-info/Edit.png')%>"
               alt="boton de editar"
             />
           </div>
@@ -44,12 +43,12 @@
       <div class="user-add">
         <img
           class="user-add__hover"
-          src="images/images-info/add-hover.svg"
+          src="<%= require('./images/images-info/add-hover.svg')%>"
           alt="boton de añadir"
         />
         <img
           class="user-add__normal"
-          src="images/images-info/add.svg"
+          src="<%= require('./images/images-info/add.svg')%>"
           alt="boton de añadir"
         />
       </div>
@@ -60,12 +59,12 @@
         <div id="contentPopup" class="block-edit">
           <img
             class="block-edit__close closeButton"
-            src="images/images-iconos/Close.svg"
+            src="<%= require('./images/images-iconos/Close.svg')%>"
             alt="Cerrar formulario"
           />
           <img
             class="block-edit__close-hover"
-            src="images/images-iconos/Close-hover.svg"
+            src="<%= require('./images/images-iconos/Close-hover.svg')%>"
             alt="Cerrar formulario"
           />
           <h4 class="block-edit__text">Editar perfil</h4>
@@ -93,7 +92,11 @@
             />
             <p class="error-message"></p>
           </div>
-          <button type="submit" id="guardar-buttonEdit" class="guardar-edit submit">
+          <button
+            type="submit"
+            id="guardar-buttonEdit"
+            class="guardar-edit submit"
+          >
             Guardar
           </button>
         </div>
@@ -105,12 +108,12 @@
         <div id="contentPopup" class="block-add">
           <img
             class="block-add__close closeButton"
-            src="images/images-iconos/Close.svg"
+            src="<%= require('./images/images-iconos/Close.svg')%>"
             alt="Cerrar formulario"
           />
           <img
             class="block-add__close-hover"
-            src="images/images-iconos/Close-hover.svg"
+            src="<%= require('./images/images-iconos/Close-hover.svg')%>"
             alt="Cerrar formulario"
           />
           <h4 class="block-add__text">Nuevo lugar</h4>
@@ -155,12 +158,12 @@
           <p class="image-popup__name"></p>
           <img
             class="image-popup__close closeButton"
-            src="images/images-iconos/Close.svg"
+            src="<%= require('./images/images-iconos/Close.svg')%>"
             alt="Cerrar formulario"
           />
           <img
             class="image-popup__closehover"
-            src="images/images-iconos/Close-hover.svg"
+            src="<%= require('./images/images-iconos/Close-hover.svg')%>"
             alt="Cerrar formulario"
           />
         </div>
@@ -174,22 +177,22 @@
           <h3 class="post__text"></h3>
           <img
             class="post__delete-hover"
-            src="images/images-post/delete-hover.svg"
+            src="<%= require('./images/images-post/delete-hover.svg')%>"
             alt="borrar"
           />
           <img
             class="post__delete"
-            src="images/images-post/delete.svg"
+            src="<%= require('./images/images-post/delete.svg')%>"
             alt="borrar"
           />
           <img
             class="post__like-hover"
-            src="images/images-post/like-hover.svg"
+            src="<%= require('./images/images-post/like-hover.svg')%>"
             alt="like"
           />
           <img
             class="post__like"
-            src="images/images-post/like.svg"
+            src="<%= require('./images/images-post/like.svg')%>"
             alt="like"
           />
         </div>
@@ -201,6 +204,6 @@
       <p class="footer__name">Dan Meza Cadillo</p>
     </footer>
 
-    <script type="module" src="scripts/index.js"></script>
+    <!--<script type="module" src="scripts/index.js"></script> -->
   </body>
 </html>

@@ -10,5 +10,6 @@
 6. #### Investigue y me ayude de fuentes de Internet para poder hacer mi javascript totalmente funcional.
 7. #### Terminé haciendo los diseños responsivos para diferentes tamaños de pantalla.
 8. #### Añadi validaciones a los formularios con js y re-escribi mi codigo más organizadamente utilizando las clases en Js.
+9. #### Refactorize todo mi projecto siguiendo a pie de letra la metodologia POO y tambien implementando webpack en el.
 
 ### Visita la pagina aqui:https://d4n-mc.github.io/web_project_around/

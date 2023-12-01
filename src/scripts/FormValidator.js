@@ -7,13 +7,12 @@ export class FormValidator {
 
   showInputError(message) {
     const errorElement = this._inputContainer.querySelector(".error-message");
-    if(this._input === document.getElementById("link")){
+    if (this._input === document.getElementById("link")) {
       message = "Ingrese una URL valida";
     }
     errorElement.textContent = message;
     this._input.setCustomValidity("");
     this._input.classList.add("error");
-
   }
 
   hideInputError() {

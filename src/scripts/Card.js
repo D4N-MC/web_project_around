@@ -1,16 +1,20 @@
-import { Popup, PopupWithImage} from "./Popup.js";
-import { Section } from "./Section.js";
+import { Popup, PopupWithImage } from "./Popup.js";
+import zionImage from "../images/images-post/zion-utah.jpg";
+import yellowstoneImage from "../images/images-post/yellowstone.jpg";
+import granCanonImage from "../images/images-post/gran-cañon.jpg";
+import lagoLouiseImage from "../images/images-post/lago-louise.jpg";
+
 export const items = [
   {
-    image: "images/images-post/zion-utah.jpg",
+    image: zionImage,
     text: "Zion Parque Nacional",
   },
   {
-    image: "images/images-post/yellowstone.jpg",
+    image: yellowstoneImage,
     text: "Parque Yellowstone",
   },
   {
-    image: "images/images-post/gran-cañon.jpg",
+    image: granCanonImage,
     text: "El Gran Cañon",
   },
   {
@@ -19,7 +23,7 @@ export const items = [
     text: "Montañas Calvas",
   },
   {
-    image: "images/images-post/lago-louise.jpg",
+    image: lagoLouiseImage,
     text: "Lago de Moraine",
   },
   {
@@ -59,8 +63,8 @@ export class Card {
     return cardElement;
   }
 
-  _handleCardClick(){
-      popupWithImage.open(this._image, this._cardName);
+  _handleCardClick() {
+    popupWithImage.open(this._image, this._cardName);
   }
 
   _handleLike() {
@@ -99,7 +103,7 @@ export class Card {
 }
 
 //items.forEach((item) => {
-  //const card = new Card(item.text, item.image);
- // card.generateCard();
- // cardList.appendChild(card._element);
+//const card = new Card(item.text, item.image);
+// card.generateCard();
+// cardList.appendChild(card._element);
 //});
