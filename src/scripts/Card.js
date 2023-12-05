@@ -101,9 +101,3 @@ export class Card {
     return this._element;
   }
 }
-
-//items.forEach((item) => {
-//const card = new Card(item.text, item.image);
-// card.generateCard();
-// cardList.appendChild(card._element);
-//});
