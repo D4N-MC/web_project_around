@@ -1,0 +1,118 @@
+.eliminatePopup {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+.popup_opened {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3 ease-in;
+}
+
+.beforeEliminate {
+  width: 430px;
+  height: 181px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.beforeEliminate-text {
+  width: 358px;
+  height: 23px;
+  font-family: Inter;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  color: black;
+  margin-top: 34px;
+  margin-bottom: 0;
+}
+.beforeEliminate-button {
+  width: 358px;
+  height: 50px;
+  background-color: black;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  align-items: center;
+  color: white;
+  margin-top: 52px;
+}
+.beforeEliminate-button:hover {
+  cursor: pointer;
+  background: #000000cc;
+}
+.beforeEliminate__close {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -45px;
+  right: -37px;
+  z-index: 2;
+}
+.beforeEliminate__closehover {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -45px;
+  right: -37px;
+  z-index: 1;
+}
+.beforeEliminate__close:hover {
+  opacity: 0;
+}
+
+@media screen and (max-width: 608px) {
+  .beforeEliminate {
+    width: 228px;
+    height: 150px;
+  }
+  .beforeEliminate-text {
+    width: 218px;
+    height: 23px;
+    font-family: Inter;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 29.05px;
+    color: black;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .beforeEliminate-button {
+    width: 200px;
+    height: 40px;
+    background-color: black;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.78px;
+    align-items: center;
+    color: white;
+    margin-top: 32px;
+  }
+  .beforeEliminate__close {
+    width: 30px;
+    height: 30px;
+    top: -32px;
+    right: -27px;
+    z-index: 2;
+  }
+  .beforeEliminate__closehover {
+    width: 30px;
+    height: 30px;
+    top: -32px;
+    right: -27px;
+    z-index: 1;
+  }
+}

@@ -49,3 +49,4 @@ export const tituloFormValidator = new FormValidator(
   "#titulo"
 );
 export const linkFormValidator = new FormValidator(".block-add__link", "#link");
+export const avatarFormValidator = new FormValidator(".profile-input", "#profileInput");

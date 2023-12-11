@@ -41,14 +41,10 @@ export class PopupWithImage extends Popup {
   }
 
   open(imageSrc, imageCaption) {
+    super.open();
     this._popupImage.src = imageSrc;
     this._popupImage.alt = imageCaption;
     this._popupCaption.textContent = imageCaption;
-    this._popup.classList.add("active");
-    super.open();
-  }
-  close() {
-    this._popup.classList.remove("active");
   }
 }
 

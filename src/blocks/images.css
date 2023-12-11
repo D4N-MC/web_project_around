@@ -44,6 +44,19 @@
   opacity: 0;
 }
 
+.post__like-count{
+  position: absolute;
+  right:16px;
+  bottom: 13px;
+  width: 24px;
+  height: 13px;
+  font-family: inter;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.73px;
+  text-align: center;
+}
+
 .post__like {
   position: absolute;
   right: 18px;
@@ -86,7 +99,6 @@
     margin-top: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     grid-row-gap: 20px;
     grid-column-gap: 18px;
   }
@@ -97,7 +109,6 @@
     margin-top: 50px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-row-gap: 20px;
     grid-column-gap: 18px;
   }

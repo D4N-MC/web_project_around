@@ -12,6 +12,14 @@ export class Section {
   }
 
   addItem(element) {
+    this._container.append(element);
+  }
+  addNewItem(element) {
     this._container.prepend(element);
+  }
+  clear() {
+    while (this._container.firstChild) {
+      this._container.removeChild(this._container.firstChild);
+    }
   }
 }

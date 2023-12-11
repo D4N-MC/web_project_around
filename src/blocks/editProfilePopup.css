@@ -1,0 +1,146 @@
+.profilePopup {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+.popup_opened {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3 ease-in;
+}
+
+.profilePopup-block {
+  width: 430px;
+  height: 272px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.profilePopup-block__title {
+  width: 358px;
+  height: 23px;
+  font-family: Inter;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  color: black;
+  margin-top: 34px;
+  margin-bottom: 0;
+}
+.profile-input {
+  margin-top: 54px;
+  margin-bottom: 0;
+}
+#profileInput {
+  width: 358px;
+  height: 28px;
+  border: none;
+  border-bottom: 1px solid;
+  font-family: Inter;
+}
+.profilePopup-block__button {
+  width: 358px;
+  height: 50px;
+  background-color: black;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  align-items: center;
+  color: white;
+  top: 195px;
+  position: absolute;
+}
+.profilePopup-block__buttonDisabled {
+  width: 358px;
+  height: 50px;
+  top: 195px;
+  position: absolute;
+  font-family: Inter;
+  background-color: white;
+  color: gray;
+  border: gray 0.5px solid;
+  cursor: not-allowed;
+  pointer-events: none;
+  z-index: 3;
+}
+.profilePopup-block__button:hover {
+  cursor: pointer;
+  background: #000000cc;
+}
+.profilePopup-block__close {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -45px;
+  right: -37px;
+  z-index: 2;
+}
+.profilePopup-block__closeHover {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -45px;
+  right: -37px;
+  z-index: 1;
+}
+.profilePopup-block__close:hover {
+  opacity: 0;
+}
+
+@media screen and (max-width: 608px) {
+  .profilePopup-block {
+    width: 238px;
+    height: 222px;
+  }
+  .profilePopup-block__title {
+    width: 238px;
+    height: 23px;
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .profile-input {
+    margin-top: 37px;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+  #profileInput {
+    width: 212px;
+    height: 28px;
+    font-size: Inter;
+    font-size: 16px;
+  }
+  .profilePopup-block__button {
+    width: 200px;
+    height: 40px;
+    top: 165px;
+  }
+  .profilePopup-block__buttonDisabled {
+    width: 200px;
+    height: 40px;
+    top: 165px;
+  }
+  .profilePopup-block__close {
+    width: 30px;
+    height: 30px;
+    top: -32px;
+    right: -27px;
+  }
+  .profilePopup-block__closeHover {
+    width: 30px;
+    height: 30px;
+    top: -32px;
+    right: -27px;
+  }
+}

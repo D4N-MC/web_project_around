@@ -1,4 +1,7 @@
 import { Popup, PopupWithImage } from "./Popup.js";
+import { cardSection, identifyCard } from "./index.js";
+import { api } from "./api.js";
+import { UserInfo, isOwner, userData } from "./UserInfo.js";
 import zionImage from "../images/images-post/zion-utah.jpg";
 import yellowstoneImage from "../images/images-post/yellowstone.jpg";
 import granCanonImage from "../images/images-post/gran-cañon.jpg";
@@ -9,28 +12,6 @@ export const items = [
     image: zionImage,
     text: "Zion Parque Nacional",
   },
-  {
-    image: yellowstoneImage,
-    text: "Parque Yellowstone",
-  },
-  {
-    image: granCanonImage,
-    text: "El Gran Cañon",
-  },
-  {
-    image:
-      "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-    text: "Montañas Calvas",
-  },
-  {
-    image: lagoLouiseImage,
-    text: "Lago de Moraine",
-  },
-  {
-    image:
-      "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-    text: "Valle de Yosemite",
-  },
 ];
 
 export const cardList = document.querySelector(".images");
@@ -40,12 +21,18 @@ export const popupCloseButton = document.querySelector(".image-popup__close");
 export const popupName = document.querySelector(".image-popup__name");
 
 const popupWithImage = new PopupWithImage(".image-popup");
+const popupDeleteCard = new Popup(".eliminatePopup");
 
 export class Card {
-  constructor(cardName, image, altText = cardName) {
+  constructor(cardName, image, cardInfo, altText = cardName) {
     this._cardName = cardName;
     this._image = image;
     this._altText = altText;
+    this._deletePopup = document.querySelector(".eliminatePopup");
+    this._deleteButton = this._deletePopup.querySelector(
+      ".beforeEliminate-button"
+    );
+    this._cardInfo = cardInfo;
   }
   _getTemplate() {
     const cardElement = document
@@ -59,7 +46,6 @@ export class Card {
     cardNameElement.textContent = this._cardName;
     cardImageElement.src = this._image;
     cardImageElement.alt = this._altText;
-
     return cardElement;
   }
 
@@ -70,12 +56,81 @@ export class Card {
   _handleLike() {
     const likeButton = this._element.querySelector(".post__like");
     const likeButtonHover = this._element.querySelector(".post__like-hover");
+    const likesCountElement = this._element.querySelector(".post__like-count");
 
-    likeButton.classList.toggle("post__liked");
-    likeButtonHover.classList.toggle("post__liked");
+    const currentLikes = parseInt(likesCountElement.textContent);
+    const isLiked = likeButton.classList.contains("post__liked");
+
+    const cardId = this._cardInfo.id;
+
+    if (isLiked) {
+      api
+        .removeLike(cardId)
+        .then((updatedCardData) => {
+          likesCountElement.textContent =
+            updatedCardData.likes.length.toString();
+          likeButton.classList.remove("post__liked");
+          likeButtonHover.classList.remove("post__liked");
+        })
+        .catch((error) => {
+          console.error('Error al quitar "me gusta" de la tarjeta:', error);
+        });
+    } else {
+      api
+        .addLike(cardId)
+        .then((updatedCardData) => {
+          likesCountElement.textContent =
+            updatedCardData.likes.length.toString();
+          likeButton.classList.add("post__liked");
+          likeButtonHover.classList.add("post__liked");
+        })
+        .catch((error) => {
+          console.error('Error al dar "me gusta" a la tarjeta:', error);
+        });
+    }
   }
   _handleDelete() {
-    this._element.remove();
+    const deleteButton = this._deleteButton;
+
+    popupDeleteCard.open();
+
+    const handleDeleteEvent = () => {
+      deleteButton.disabled = true;
+      deleteButton.textContent = "Eliminando...";
+
+      const currentCardInfo = this._cardInfo;
+      const cardId = currentCardInfo.id;
+
+      isOwner(userData, currentCardInfo.owner);
+
+      deleteButton.removeEventListener("click", handleDeleteEvent);
+
+      api
+        .deleteCard(cardId)
+        .then((data) => {
+          if (data.message && data.message === "This post has been deleted") {
+            console.log("Tarjeta eliminada:", data);
+
+            if (this._element) {
+              this._element.remove();
+            }
+          } else {
+            throw new Error(
+              "Error al eliminar la tarjeta: Respuesta inesperada del servidor"
+            );
+          }
+        })
+        .catch((error) => {
+          console.error("Error al eliminar la tarjeta:", error);
+        })
+        .finally(() => {
+          popupDeleteCard.close();
+          deleteButton.textContent = "Sí";
+          deleteButton.disabled = false;
+        });
+    };
+
+    deleteButton.addEventListener("click", handleDeleteEvent);
   }
 
   _setEventListeners() {
@@ -100,4 +155,30 @@ export class Card {
     this._setEventListeners();
     return this._element;
   }
+}
+
+export function addNewCard(name, link) {
+  api
+    .addCard(name, link)
+    .then((newCardData) => {
+      const cardInfo = {
+        name: newCardData.name,
+        link: newCardData.link,
+        owner: newCardData.owner,
+        id: newCardData._id,
+        likes: newCardData.likes,
+      };
+
+      identifyCard(cardInfo);
+
+      const newCard = new Card(newCardData.name, newCardData.link, cardInfo);
+      newCard.generateCard();
+
+      cardSection.addNewItem(newCard._element);
+
+      const isCurrentUserOwner = isOwner(userData, cardInfo.owner);
+    })
+    .catch((error) => {
+      console.error("Error al añadir la nueva tarjeta:", error);
+    });
 }

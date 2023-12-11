@@ -17,14 +17,18 @@
     </header>
 
     <section class="info">
-      <img
-        class="user-photo"
-        src="<%= require('./images/images-info/photo.png')%>"
-        alt="foto de perfil"
-      />
+      <div class="photo-container">
+        <img class="user-photo" alt="foto de perfil" />
+        <img class="user-photoBack" alt="." />
+        <img
+          class="user-photoEdit"
+          src="<%= require('./images/images-iconos/photo-edit.svg')%>"
+          alt="editar perfil"
+        />
+      </div>
       <div class="user">
         <div class="user__top">
-          <h2 class="user__top-name">Jacques Cousteau</h2>
+          <h2 class="user__top-name"></h2>
           <div class="user__edit-buttons">
             <img
               class="user__top-hover"
@@ -38,7 +42,7 @@
             />
           </div>
         </div>
-        <h3 class="user__bottom">Explorador</h3>
+        <h3 class="user__bottom"></h3>
       </div>
       <div class="user-add">
         <img
@@ -53,6 +57,59 @@
         />
       </div>
     </section>
+
+    <form class="profilePopup" novalidate>
+      <div class="Edit">
+        <div class="profilePopup-block contentPopup">
+          <p class="profilePopup-block__title">Cambiar foto de perfil</p>
+          <div class="profile-input">
+            <input
+              type="text"
+              id="profileInput"
+              class="input"
+              placeholder="Url de la nueva foto"
+              minlength="2"
+              maxlength="400"
+              pattern="https:\/\/.*|http:\/\/.*"
+              required
+            />
+            <p class="error-message"></p>
+          </div>
+          <button id="submitAvatar" class="profilePopup-block__button">
+            Guardar
+          </button>
+          <img
+            class="profilePopup-block__close closeButton"
+            src="<%= require('./images/images-iconos/Close.svg')%>"
+            alt="Cerrar formulario"
+          />
+          <img
+            class="profilePopup-block__closeHover"
+            src="<%= require('./images/images-iconos/Close-hover.svg')%>"
+            alt="Cerrar formulario"
+          />
+        </div>
+      </div>
+    </form>
+
+    <div class="eliminatePopup">
+      <div class="Edit">
+        <div class="beforeEliminate contentPopup">
+          <p class="beforeEliminate-text">¿Estás seguro/a?</p>
+          <button class="beforeEliminate-button">Sí</button>
+          <img
+            class="beforeEliminate__close closeButton"
+            src="<%= require('./images/images-iconos/Close.svg')%>"
+            alt="Cerrar formulario"
+          />
+          <img
+            class="beforeEliminate__closehover"
+            src="<%= require('./images/images-iconos/Close-hover.svg')%>"
+            alt="Cerrar formulario"
+          />
+        </div>
+      </div>
+    </div>
 
     <form class="formulario-edit" novalidate>
       <div class="Edit">
@@ -135,7 +192,7 @@
               id="link"
               class="input"
               placeholder="Dirección URL de la imagen"
-              pattern="https:\/\/.*"
+              pattern="https:\/\/.*|http:\/\/.*"
               required
             />
             <p class="error-message"></p>
@@ -170,34 +227,34 @@
       </div>
     </div>
 
-    <section class="images">
-      <template id="post-template">
-        <div class="post">
-          <img class="post__image" alt="" />
-          <h3 class="post__text"></h3>
-          <img
-            class="post__delete-hover"
-            src="<%= require('./images/images-post/delete-hover.svg')%>"
-            alt="borrar"
-          />
-          <img
-            class="post__delete"
-            src="<%= require('./images/images-post/delete.svg')%>"
-            alt="borrar"
-          />
-          <img
-            class="post__like-hover"
-            src="<%= require('./images/images-post/like-hover.svg')%>"
-            alt="like"
-          />
-          <img
-            class="post__like"
-            src="<%= require('./images/images-post/like.svg')%>"
-            alt="like"
-          />
-        </div>
-      </template>
-    </section>
+    <section class="images"></section>
+    <template id="post-template">
+      <div class="post">
+        <img class="post__image" alt="" />
+        <h3 class="post__text"></h3>
+        <img
+          class="post__delete-hover"
+          src="<%= require('./images/images-post/delete-hover.svg')%>"
+          alt="borrar"
+        />
+        <img
+          class="post__delete"
+          src="<%= require('./images/images-post/delete.svg')%>"
+          alt="borrar"
+        />
+        <div class="post__like-count">0</div>
+        <img
+          class="post__like-hover"
+          src="<%= require('./images/images-post/like-hover.svg')%>"
+          alt="like"
+        />
+        <img
+          class="post__like"
+          src="<%= require('./images/images-post/like.svg')%>"
+          alt="like"
+        />
+      </div>
+    </template>
 
     <footer class="footer">
       <h3 class="footer__tripleten">© 2023. Tripleten</h3>

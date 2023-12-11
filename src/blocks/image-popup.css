@@ -11,9 +11,10 @@
   z-index: 3;
 }
 
-.image-popup.active {
+.popup_opened {
   opacity: 1;
   pointer-events: auto;
+  transition: opacity 0.3 ease-in;
 }
 
 .image-popup__content {
