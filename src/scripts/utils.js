@@ -1,8 +1,7 @@
 import "../index.css";
-import { Card, addNewCard } from "./Card.js";
+import { addNewCard } from "./Card.js";
 import { Popup, PopupWithForm } from "./Popup.js";
 import { UserInfo } from "./UserInfo.js";
-import { cardSection } from "./index.js";
 import { api } from "./api.js";
 import { avatarFormValidator } from "./FormValidator.js";
 //Seccion del perfil del usuario
@@ -29,6 +28,19 @@ export class Form {
   constructor(formElement) {
     this._formElement = formElement;
   }
+  _setEventListeners(){
+    this._formElement.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this._handleSubmitForm();
+    });
+
+    this._formElement.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        this._handleEnterKeyPress();
+      }
+    });
+  }
 }
 
 export const changePhotoPopup = new Popup(".profilePopup");
@@ -42,7 +54,7 @@ export class FormChangePhoto extends Form {
     );
     this._userPhoto = document.querySelector(".user-photo");
 
-    this._setEventListeners();
+    this._setProfileEventListeners();
   }
 
   submitChangedPhoto() {
@@ -73,7 +85,7 @@ export class FormChangePhoto extends Form {
     this._urlInput.value = "";
   }
 
-  _setEventListeners() {
+  _setProfileEventListeners() {
     this._formElement.addEventListener("submit", (event) => {
       event.preventDefault();
       this.submitChangedPhoto();
@@ -94,6 +106,9 @@ export class FormChangePhoto extends Form {
         this.disableSubmit();
       }
     });
+  }
+  _setEventListeners(){
+    //metodo anulado
   }
   _handleEnterKeyPress() {
     if (this._urlInput.validity.valid) {
@@ -122,7 +137,7 @@ export class FormChangePhoto extends Form {
 export const editPopup = new PopupWithForm(
   ".formulario-edit",
   (inputValues) => {
-    console.log("Valores del Usuario:", inputValues);
+    //
   }
 );
 
@@ -149,18 +164,7 @@ export class FormEdit extends Form {
   }
 
   _setEventListeners() {
-    this._formElement.addEventListener("submit", (event) => {
-      event.preventDefault();
-      this._handleSubmitForm();
-    });
-
-    this._formElement.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        this._handleEnterKeyPress();
-      }
-    });
-
+    super._setEventListeners();
     this._nombreInput.addEventListener("input", () => {
       this._handleInputValidation();
     });
@@ -242,20 +246,10 @@ export class FormAdd extends Form {
     this._titleInput = formElement.querySelector("#titulo");
     this._linkInput = formElement.querySelector("#link");
     this._submitButton = formElement.querySelector("#guardar-buttonAdd");
-    this._setEventListenersAdd();
+    this._setEventListeners();
   }
-  _setEventListenersAdd() {
-    this._formElement.addEventListener("submit", (event) => {
-      event.preventDefault();
-      this._handleSubmitForm();
-    });
-
-    this._formElement.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        this._handleEnterKeyPress();
-      }
-    });
+  _setEventListeners() {
+    super._setEventListeners();
 
     addTitulo.addEventListener("input", () => {
       if (addTitulo.validity.valid && addLink.validity.valid) {

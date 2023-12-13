@@ -13,7 +13,7 @@
 .popup_opened {
   opacity: 1;
   pointer-events: auto;
-  transition: opacity 0.3 ease-in;
+  transition: opacity 0.3s ease-in;
 }
 
 .profilePopup-block {
@@ -118,7 +118,6 @@
   #profileInput {
     width: 212px;
     height: 28px;
-    font-size: 16px;
   }
   .profilePopup-block__button {
     width: 200px;

@@ -21,7 +21,7 @@ import {
 } from "./FormValidator.js";
 
 import { Card, items } from "./Card.js";
-import { UserInfo, userData, isOwner } from "./UserInfo.js";
+import { userData, isOwner } from "./UserInfo.js";
 import { api } from "./api.js";
 
 const changePhotoElement = document.querySelector(".profilePopup");
@@ -94,8 +94,6 @@ api
         likes: cardData.likes,
       };
 
-      identifyCard(cardInfo);
-
       const card = new Card(cardData.name, cardData.link, cardInfo);
       card.generateCard();
       cardSection.addItem(card._element);
@@ -123,7 +121,3 @@ api
   .catch((error) => {
     console.error("Error al obtener las tarjetas:", error);
   });
-
-export function identifyCard(cardContainer) {
-  //console.log("ID de la tarjeta identifiada", cardContainer.id);
-}

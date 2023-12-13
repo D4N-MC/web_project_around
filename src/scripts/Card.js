@@ -1,5 +1,5 @@
 import { Popup, PopupWithImage } from "./Popup.js";
-import { cardSection, identifyCard } from "./index.js";
+import { cardSection } from "./index.js";
 import { api } from "./api.js";
 import { UserInfo, isOwner, userData } from "./UserInfo.js";
 import zionImage from "../images/images-post/zion-utah.jpg";
@@ -109,7 +109,6 @@ export class Card {
         .deleteCard(cardId)
         .then((data) => {
           if (data.message && data.message === "This post has been deleted") {
-            console.log("Tarjeta eliminada:", data);
 
             if (this._element) {
               this._element.remove();
@@ -168,8 +167,6 @@ export function addNewCard(name, link) {
         id: newCardData._id,
         likes: newCardData.likes,
       };
-
-      identifyCard(cardInfo);
 
       const newCard = new Card(newCardData.name, newCardData.link, cardInfo);
       newCard.generateCard();

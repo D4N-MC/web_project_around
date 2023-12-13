@@ -75,7 +75,7 @@
 
 .post__liked{
   background-image: url(../images/images-post/liked.svg);
-  z-index:3px;
+  z-index:3;
   position: absolute;
   right: 18px;
   bottom: 30px;

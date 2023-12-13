@@ -2,34 +2,50 @@ export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._content = this._popup.querySelector(".contentPopup");
-    this.setEventListeners();
+
+    this._handleCloseButtonClick = this._handleCloseButtonClick.bind(this);
+    this._handleKeyDown = this._handleKeyDown.bind(this);
+    this._handleMouseDown = this._handleMouseDown.bind(this);
   }
 
   open() {
     this._popup.classList.add("popup_opened");
+    this.setEventListeners();
   }
 
   close() {
     this._popup.classList.remove("popup_opened");
+    this.removeEventListeners();
   }
 
   setEventListeners() {
-    this._popup.addEventListener("click", (event) => {
-      if (event.target.classList.contains("closeButton")) {
-        this.close();
-      }
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        this.close();
-      }
-    });
+    this._popup.addEventListener("click", this._handleCloseButtonClick);
+    document.addEventListener("keydown", this._handleKeyDown);
+    this._popup.addEventListener("mousedown", this._handleMouseDown);
+  }
 
-    this._popup.addEventListener("mousedown", (event) => {
-      if (!this._content.contains(event.target)) {
-        this.close();
-      }
-    });
+  removeEventListeners() {
+    this._popup.removeEventListener("click", this._handleCloseButtonClick);
+    document.removeEventListener("keydown", this._handleKeyDown);
+    this._popup.removeEventListener("mousedown", this._handleMouseDown);
+  }
+
+  _handleCloseButtonClick(event) {
+    if (event.target.classList.contains("closeButton")) {
+      this.close();
+    }
+  }
+
+  _handleKeyDown(event) {
+    if (event.key === "Escape") {
+      this.close();
+    }
+  }
+
+  _handleMouseDown(event) {
+    if (!this._content.contains(event.target)) {
+      this.close();
+    }
   }
 }
 
@@ -53,6 +69,7 @@ export class PopupWithForm extends Popup {
     super(popupSelector);
     this._submitCallback = submitCallback;
     this._inputList = this._popup.querySelectorAll(".input");
+    this.setSubmitListener();
   }
 
   _getInputValues() {
@@ -63,8 +80,7 @@ export class PopupWithForm extends Popup {
     return inputValues;
   }
 
-  setEventListeners() {
-    super.setEventListeners();
+  setSubmitListener() {
     this._popup.addEventListener("submit", (event) => {
       event.preventDefault();
       this._submitCallback(this._getInputValues());
